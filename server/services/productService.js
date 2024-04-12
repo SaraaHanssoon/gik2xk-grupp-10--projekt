@@ -220,7 +220,7 @@ async function _addProductToCart(product, carts) {
 
 module.exports = {
 	_findOrCreateCartId,
-	_addProductToCart,
+	//_addProductToCart, *******??
 	getByCart,
 	getByUser,
 	addReview,
