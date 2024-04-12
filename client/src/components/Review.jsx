@@ -1,41 +1,45 @@
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
-import { Rating,Typography  } from '@mui/material';
+import { Rating, Typography, Card, CardContent } from '@mui/material';
 
-
-function Review({review }) {
+function Review({ review }) {
   return (
-    <>
-       <Link to={`/reviews/${review.id}`}></Link>   
-      <Typography sx={{ my: 1, display: 'block' }}
-              color="text.primary"
-              variant="h4"
-              component="span">{review.title}
-              </Typography>
-  
-              <Rating name="read-only" value={review.review} readOnly /> 
-    <Typography
-              color="text.secondary"
-              variant="body1"
-              component="span"
-              sx={{ display: 'block' }}>
-              {review.body}
-            </Typography>
-    </>
+    <Card sx={{ maxWidth: 345, m: 2, backgroundColor: '#f3e5f5', boxShadow: 'none', border: '1px solid #bcaaa4' }}>
+      <CardContent>
+        <Link to={`/reviews/${review.id}`} style={{ textDecoration: 'none' }}>
+          <Typography
+            sx={{ mb: 1 }}
+            color="text.primary"
+            variant="h5"
+            component="span"
+          >
+            {review.title}
+          </Typography>
+        </Link>
+
+        <Rating name="read-only" value={review.review} readOnly sx={{ mb: 1 }} />
+
+        <Typography
+          color="text.secondary"
+          variant="body2"
+          component="span"
+        >
+          {review.body}
+        </Typography>
+      </CardContent>
+    </Card>
   );
 }
 
 Review.propTypes = {
   review: PropTypes.shape({
-    id: PropTypes.number,
-    title: PropTypes.string,
-    body: PropTypes.string,
-    rating: PropTypes.number,
-    review: PropTypes.number,
+    id: PropTypes.number.isRequired,
+    title: PropTypes.string.isRequired,
+    body: PropTypes.string.isRequired,
+    review: PropTypes.number.isRequired,
     createdAt: PropTypes.string,
-    updatedAt: PropTypes.string, 
+    updatedAt: PropTypes.string,
   }).isRequired
 };
 
-  
 export default Review;

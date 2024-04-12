@@ -17,13 +17,12 @@ const constraints = {
 	},
 };
 
-// *******************
 async function getAll() {
 	try {
 		const allProducts = await db.product
-			.findAll // Ändrat findAll till getAll
+			.findAll 
 			();
-		/* Om allt blev bra, returnera allPosts */
+
 		return createResponseSuccess(
 			allProducts.map((product) => _formatProduct(product))
 		);
@@ -37,7 +36,7 @@ async function getByCart(cartId) {
 		const cart = await db.cart.findOne({ where: { id: cartId } });
 		const allProducts = await cart.getProducts({
 		});
-		/* Om allt blev bra, returnera allPosts */
+
 		return createResponseSuccess(
 			allProducts.map((product) => _formatProduct(product))
 		);
@@ -48,13 +47,12 @@ async function getByCart(cartId) {
 
 
 
-// Ska det vara product eller cart? Vad ska hämtas? /* */
 async function getByUser(userId) {
 	try {
 		const user = await db.user.findOne({ where: { id: userId } });
 		const allProducts =
 			await user.getProducts;
-		/* Om allt blev bra, returnera allPosts */
+
 		return createResponseSuccess(
 			allProducts.map((product) => _formatProduct(product))
 		);
@@ -74,7 +72,7 @@ async function getById(id) {
 				},
 			],
 		});
-		/* Om allt blev bra, returnera post */
+
 		return createResponseSuccess(_formatProduct(product));
 	} catch (error) {
 		return createResponseError(error.status, error.message);
@@ -103,7 +101,7 @@ async function create(product) {
 	}
 	try {
 		const newProduct = await db.product.create(product);
-		//lägg till eventuella taggar
+
 		await _addProductToCart(newProduct, product.carts);
 
 		return createResponseSuccess(newProduct);
@@ -156,8 +154,6 @@ async function destroy(id) {
 }
 
 
-
-// *******************
 function _formatProduct(product) {
 	const cleanProduct = {
 		id: product.id,
@@ -221,7 +217,6 @@ async function _addProductToCart(product, carts) {
 
 module.exports = {
 	_findOrCreateCartId,
-	//_addProductToCart,
 	getByCart,
 	getByUser,
 	addReview,

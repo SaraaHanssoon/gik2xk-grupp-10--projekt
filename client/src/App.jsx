@@ -1,6 +1,7 @@
 import { Link, Outlet } from 'react-router-dom';
 import { Box, AppBar, Toolbar, Typography, Button, Container, Tooltip, createTheme, ThemeProvider } from '@mui/material';
 
+
 const theme = createTheme({
   palette: {
     background: {
@@ -10,6 +11,9 @@ const theme = createTheme({
       main: '#795548', 
     },
   },
+  typography: {
+    fontFamily: 'Georgia, serif', 
+  },
   components: {
     MuiLink: {
       defaultProps: {
@@ -17,6 +21,20 @@ const theme = createTheme({
         color: 'inherit',
       },
     },
+    MuiAppBar: {
+      styleOverrides: {
+        root: {
+          backgroundColor: '#5d4037', 
+        }
+      }
+    },
+    MuiButton: {
+      styleOverrides: {
+        root: {
+          margin: '0 8px', 
+        }
+      }
+    }
   },
 });
 
@@ -25,26 +43,26 @@ function App() {
     <ThemeProvider theme={theme}>
       <Box sx={{ flexGrow: 1, bgcolor: 'background.default' }}>
         <AppBar position="static">
-          <Toolbar sx={{ paddingLeft: '10px', paddingRight: '10px', display: 'flex', justifyContent: 'space-between' }}>
-            <Typography variant="h6" component="div" sx={{ color: 'white', fontSize: '25px' }}>
-              <Link to="/">Kaffe Shoppen!</Link>
+          <Toolbar sx={{ display: 'flex', justifyContent: 'space-between' }}>
+            <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
+              <Link to="/" style={{ fontSize: '24px', color: 'white', textDecoration: 'none' }}>Coffee Shop</Link>
             </Typography>
-            <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-start' }}>
+            <Box sx={{ display: 'flex', alignItems: 'center' }}>
               <Tooltip title="Endast admin kan skapa ny vara" componentsProps={{ tooltip: { sx: { fontSize: "1rem" } } }}>
-                <Button color="inherit" sx={{ marginBottom: '5px' }}>
-                  <Link to="/products/new" style={{ fontSize: '16px', color: 'inherit', textDecoration: 'none' }}>Skapa ny produkt</Link>
+                <Button color="inherit">
+                  <Link to="/products/new">Create new product</Link>
                 </Button>
               </Tooltip>
               <Button color="inherit">
-                <Link to="/cart" style={{ fontSize: '16px', color: 'inherit', textDecoration: 'none' }}>Varukorg</Link>
+                <Link to="/cart">Shopping Cart</Link>
               </Button>
             </Box>
           </Toolbar>
         </AppBar>
+        <Container sx={{ mt: 4 }} maxWidth="xl" component="main">
+          <Outlet />
+        </Container>
       </Box>
-      <Container sx={{ mt: 4 }} maxWidth="xl" component="main">
-        <Outlet />
-      </Container>
     </ThemeProvider>
   );
 }
