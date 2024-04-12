@@ -17,9 +17,9 @@ import {
 
 function ProductItemLarge({product}) {
   const averageRating = product ? calculateAverageRating(product.reviews) : 0;
-	const [amount, setAmount] = useState(1); // Startar med 1 produkt som standard
-	const hardcodedCartId = 1; // Hårdkodat varukorgs-ID
-	const userId = 1; // Hårdkodat användar-ID
+	const [amount, setAmount] = useState(1); 
+	const hardcodedCartId = 1;
+	const userId = 1; 
 	const navigate = useNavigate();
 
 const handleAddToCart = async () => {
@@ -84,7 +84,6 @@ const handleAddToCart = async () => {
 	);
 }
 
-// Vi har lagt till emptyProduct i propTypes  för att släcka id i ProductEdit.
 ProductItemLarge.propTypes = {
   product: PropTypes.shape({
     reviews: PropTypes.arrayOf(PropTypes.shape({
@@ -96,7 +95,7 @@ ProductItemLarge.propTypes = {
     updatedAt: PropTypes.string, 
     body: PropTypes.string,
     price: PropTypes.number,
-	//emptyProduct: PropTypes.object,
+	emptyProduct: PropTypes.object,
     carts: PropTypes.arrayOf(PropTypes.string)
   }).isRequired
 };

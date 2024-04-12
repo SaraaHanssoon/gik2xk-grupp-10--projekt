@@ -19,5 +19,3 @@ export function toDateTimeString(dateString) {
 	string += format(date, "hh:mm");
 	return string;
 }
-
-//************* npm install date-fns --save  ************

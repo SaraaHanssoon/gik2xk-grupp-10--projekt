@@ -157,7 +157,6 @@ async function destroy(id) {
 
 
 
-// *******************
 function _formatProduct(product) {
 	const cleanProduct = {
 		id: product.id,
@@ -221,7 +220,7 @@ async function _addProductToCart(product, carts) {
 
 module.exports = {
 	_findOrCreateCartId,
-	//_addProductToCart,
+	_addProductToCart,
 	getByCart,
 	getByUser,
 	addReview,
