@@ -1,21 +1,20 @@
 import { Link, Outlet } from 'react-router-dom';
 import { Box, AppBar, Toolbar, Typography, Button, Container, Tooltip, createTheme, ThemeProvider } from '@mui/material';
 
-// Skapa ett anpassat tema
 const theme = createTheme({
   palette: {
     background: {
-      default: '#f5f5dc', // En lattebrun färg för sidans bakgrund
+      default: '#f5f5dc', 
     },
     primary: {
-      main: '#795548', // En mörkare brun färg för AppBar etc.
+      main: '#795548', 
     },
   },
   components: {
     MuiLink: {
       defaultProps: {
-        underline: 'none', // Tar bort understrykningen från länkar
-        color: 'inherit', // Använder den ärftliga färgen, användbart för AppBar
+        underline: 'none', 
+        color: 'inherit',
       },
     },
   },

@@ -18,7 +18,7 @@ import {
 function ProductItemLarge({product}) {
   const averageRating = product ? calculateAverageRating(product.reviews) : 0;
 	const [amount, setAmount] = useState(1); 
-	const hardcodedCartId = 1;
+	const hardcodedCartId = 1; 
 	const userId = 1; 
 	const navigate = useNavigate();
 
@@ -95,7 +95,6 @@ ProductItemLarge.propTypes = {
     updatedAt: PropTypes.string, 
     body: PropTypes.string,
     price: PropTypes.number,
-	emptyProduct: PropTypes.object,
     carts: PropTypes.arrayOf(PropTypes.string)
   }).isRequired
 };
