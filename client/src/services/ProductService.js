@@ -42,7 +42,7 @@ export async function create(product) {
 
 export async function update(product) {
   try {
-    const response = await axios.post('/products', product);
+    const response = await axios.put('/products', product);
     if (response.status === 200) return response.data;
     else {
       console.log(response.data);
@@ -52,6 +52,7 @@ export async function update(product) {
     e?.response ? console.log(e.response.data) : console.log(e);
   }
 }
+
 
 export async function remove(id) {
   try {
