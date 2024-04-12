@@ -48,7 +48,7 @@ router.put('/', (req, res) => {
 });
 
 
-// För att tabort vara
+// För att ta bort vara
 router.delete('/', (req, res) => {
   const id = req.body.id;
   productService.destroy(id).then((result) => {
